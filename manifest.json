@@ -1,0 +1,23 @@
+{
+    "name": "Auto clicker extension",
+    "description": "Click on buttons in specific condition",
+    "version": "2.2.8",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": ["storage", "activeTab", "scripting", "tabs"],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "/images/x16.png",
+            "32": "/images/x32.png",
+            "96": "/images/x96.png"
+        } 
+    },
+    "icons": {
+        "16": "/images/x16.png",
+        "32": "/images/x32.png",
+        "96": "/images/x96.png"
+    } 
+}
