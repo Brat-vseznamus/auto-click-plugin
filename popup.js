@@ -57,9 +57,7 @@ changeColor.addEventListener("click", async () => {
 
             setButtonColor(red)
             setTextColor(red)
-
         } else {
-            chrome.storage.sync.set({times: result.times})
 
             const i = createInput(result, tab)
             i.value = (Math.floor(result.times[tab.id.toString()] / 60)).toString() 
@@ -67,7 +65,6 @@ changeColor.addEventListener("click", async () => {
                 + (result.times[tab.id.toString()] % 60).toString();
 
             changeColor.parentNode.replaceChild(i, changeColor);
-
         }
     })
 });

@@ -10,6 +10,7 @@ chrome.runtime.onInstalled.addListener(() => {
 setInterval(async () => {
     chrome.storage.sync.get(['tabs', 'times'], function(result) {
         result.tabs.forEach((tabId) => {
+            console.log("updating for " + tabId);
             try {
                 chrome.scripting.executeScript({
                     target: { tabId: tabId },
@@ -44,8 +45,13 @@ function checkTime(timeDiff) {
 
         // console.log('Time until the end ' + (fullTime - currTime) + 'ms')
         if ((fullTime - currTime) < timeDiff && fullTime != 0) {
+            console.log('time updated!')
             let nextButton = document.querySelector("body > div.body-container > div > div > div > div.col.s12.m8.l9.col-even > div:nth-child(3) > div > div.m-select-sibling-episode > a:nth-child(2)")
             nextButton.click()
+            setTimeout(() => {
+                let playButton = document.querySelector("#videoFrame").contentWindow.document.querySelector("#main-video > div.vjs-big-play-button");
+                playButton.click();
+            }, 2 * 1000);
         }
     } catch (e) {
         console.error(e)
