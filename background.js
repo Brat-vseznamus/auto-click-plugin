@@ -49,8 +49,18 @@ function checkTime(timeDiff) {
             let nextButton = document.querySelector("body > div.body-container > div > div > div > div.col.s12.m8.l9.col-even > div:nth-child(3) > div > div.m-select-sibling-episode > a:nth-child(2)")
             nextButton.click()
             setTimeout(() => {
-                let playButton = document.querySelector("#videoFrame").contentWindow.document.querySelector("#main-video > div.vjs-big-play-button");
+                var playButton = document.querySelector("#videoFrame").contentWindow.document.querySelector("#main-video > div.vjs-big-play-button");
+                // var sizeButton = document.querySelector("#videoFrame").contentWindow.document.querySelector("#main-video > div.vjs-control-bar > div.vjs-fullscreen-control.vjs-control")
+                // var sizeButton = document.querySelector("#videoFrame").contentWindow.document.querySelector("#main-video > div.vjs-control-bar > div.vjs-fullscreen-control.vjs-control > div")
+                while (playButton === null) {
+                    playButton = document.querySelector("#videoFrame").contentWindow.document.querySelector("#main-video > div.vjs-big-play-button");
+                    // sizeButton = document.querySelector("#videoFrame").contentWindow.document.querySelector("#main-video > div.vjs-control-bar > div.vjs-fullscreen-control.vjs-control > div");    
+                }
+                
                 playButton.click();
+                
+                // setTimeout(500)
+                // sizeButton.requestFullscreen();
             }, 2 * 1000);
         }
     } catch (e) {
